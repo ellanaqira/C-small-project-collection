@@ -3,58 +3,73 @@
 #define MAXCHAR 1000
 
 /*function declaration*/
-void input_menu(char input[]);
-void separated_name(char from_combined[]);
+void input_menu(char input[], int limit);
+int get_names(char input[], int limit);
+void copy(char from[], char to[]);
+void listed_name(char from_combined[]);
 int string_comparison(char str1[], char str2[]);
 
 
 int main() {
-    char list_of_name[MAXCHAR];
+    char names[MAXCHAR];
+    char raw_names[MAXCHAR];
     char command[MAXCHAR];
-    char available_cmd[] = "'help' - to show all available commands\n'list' - print name line by line\n'quit' - ends the program\n";
-    // if (string_comparison("help\0", "help") == 1) {
-    //     printf("corect\n");
-    // }
+    char longest[MAXCHAR];
+    char available_cmd[] = "'help' - show all available commands\n'list' - print name line by line\n'longest - show the longest name'\n'quit' - ends the program\n";
 
-    // else {
-    //     printf("false\n");
-    // }
+    int len;
+    int max = 0;
+
     printf("\n[NAME INPUT]");
     printf("\nInput list of name in one line separated by coma (,)\n");
     printf("example : 1st name,2nd name,....(ENTER)\n");
-    printf("> ");
-    input_menu(list_of_name);
     
+    while ((len = get_names(names, MAXCHAR)) > 0) {
+        if (len > max) {
+            max = len;
+            copy(names, longest);
+        }
+    }
+
+
     printf("\n[COMMAND INPUT]");
     printf("\ntype 'help' to see available command");
 
 
     while (1) {
         printf("\n> ");
-        input_menu(command);
+        input_menu(command, MAXCHAR);
 
-        if (string_comparison(command, "quit") == 1) {
+        if (string_comparison(command, "quit")) {
             break;
         }
-        else if (string_comparison (command, "help") == 1) {
+        else if (string_comparison(command, "help")) {
             printf("%s", available_cmd);
         }
-        else if (string_comparison (command, "list") == 1) {
-            separated_name(list_of_name);
-            printf("%s\n", list_of_name);
+        else if (string_comparison(command, "list")) {
+            listed_name(names);
+            printf("%s\n", names);
+        }
+        else if (string_comparison(command, "longest")) {
+            if (max > 0) {
+                printf("longest name : %s\n", longest);
+            }
         }
         else {
             printf("commands not available\n");
         }
     }    
-
     return 0;
 }
 
-void input_menu(char input[]) {
+
+void input_menu(char input[], int limit) {
     int keyboard_input;
     int i = 0;
     while ((keyboard_input = getchar()) != EOF) {
+        if (i >= (limit-1)) {
+            break;
+        }
         input[i] = keyboard_input;
         if (keyboard_input == '\n') {
             input[i] = '\0';
@@ -65,7 +80,36 @@ void input_menu(char input[]) {
 }
 
 
-void separated_name(char from_combined[]) {
+int get_names(char input[], int limit) {
+    int c, i;
+
+
+    for (i=0; i<limit-1 && (c=getchar()) != EOF && c!=','; ++i) {
+        if (c == '\n') {
+            input[i] = '\0';
+            break;
+        }
+
+        input[i] = c;
+
+    }
+
+    if (c == ',') {
+        input[i] = '\0';
+    }
+    return i;
+}
+
+
+void copy(char from[], char to[]) {
+    int i = 0;
+    while ((to[i] = from[i]) != '\0') {
+        ++i;
+    }
+}
+
+
+void listed_name(char from_combined[]) {
     int i, n;
     i = n = 0;
 
