@@ -17,7 +17,7 @@ int main() {
     char names[MAXLINE];
     char longest[MAXLINE];
     char command[MAXLINE];
-    char available_command[] = "'help' - show available command\n'long' - show longest name\n'num' show number of names\n'-Q' - quit\n\n";
+    char available_command[] = "'help' - show available command\n'long' - show longest name\n'num' - show number of names\n'-Q' - quit\n\n";
 
     printf("\n[ Input Name ]\n");
     printf("Type '-F' at a newline to finish\n");
@@ -55,7 +55,7 @@ int main() {
             break;
         }
         else {
-            printf("Command not include\n\n");
+            printf("Command not included\n\n");
         }
     }
     return 0;
