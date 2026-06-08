@@ -72,12 +72,11 @@ int validation(char check_input[], char validate_input[]) {
     int j = 0;
 
     while (check_input[j] != '\0' && validate_input[j] != '\0') {
-        ++j;
-
         if (check_input[j] != validate_input[j]) {
             correct = 0;
             break;
         }
+        ++j;
     }
     return correct;
 }
