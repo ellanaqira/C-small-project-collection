@@ -5,8 +5,14 @@ void fold (char raw_string[]);
 int main(void) {
     char s[1000];
 
+    printf("\nType something without a newline\nand press ctrl+d (EOF) to finish\n");
+    printf("\n_.-<[-Raw Text-]>-._\n");
+    printf("|   |          |   |\n");
     fold(s);
-    printf("\n\n%s\n", s);
+
+    printf("\n\n_.-<[-Folded Text-]>-._\n");
+    printf("|   |             |   |\n");
+    printf("%s\n", s);
     return 0;
 }
 
@@ -23,14 +29,15 @@ void fold (char raw_s[]) {
                 raw_s[i] = '\n';
                 limit = limit + 52;
             }
-            // else {
-            //     while (s != ' ') {
-            //         ++i;
-            //         raw_s[i] = s;
-            //     }
-            //     raw_s[i] = '\n';
-            //     limit = limit + 10;
-            // }
+            else {
+                while ((s = getchar()) != EOF && s != ' ') {
+                    ++i;
+                    raw_s[i] = s;
+                }
+                ++i;
+                raw_s[i] = '\n';
+                limit = limit + 52;
+            }
         }
         ++i;
     }
