@@ -4,27 +4,27 @@
 double powof(double base, double exponent);
 
 int main(void) {
-    int result1 = powof(2,0);
-    int result2 = powof(2,5);
+    int result1 = powof(2,3);
+    long long result2 = powof(2,32);
+    int result3 = powof(2,0);
 
-    printf("2^0 = %d\n", result1);
-    printf("2^5 = %d\n", result2);
+    printf("2^3  = %d\n", result1);
+    printf("2^32 = %lld\n", result2);
+    printf("2^0  = %d\n", result3);
     return 0;
 }
 
 double powof(double x, double y) {
-    double result;
-    
+    const double base = x;
+
     if (y == 0) {
         return 1;
     }
     if (y >= 1) {
-        double base = x;
-        while (y > 1) {
-            --y;
+        int i;
+        for (i=1; i<y; ++i) {
             x = x * base;
         }
-        result = x;
     }
-    return result;
+    return x;
 }
