@@ -60,3 +60,10 @@ int main(void) {
 
     return 0;
 }
+
+
+// This verry simple project is based from Excercise 2-1 from C Programming
+// Language Second Edition by Brian W.Kernighan & Dennis M.Ritchie. I also
+// add information about the range of unsigned and signed of data type. I
+// add some decoration too like the title, newline, and information section
+// to make it looks neater and not boring.
