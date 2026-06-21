@@ -32,4 +32,4 @@ int upper(int c) {
 // you can run it by execute this command: ./lowup.exe
 // This verry simple project is based from example function from C Programming
 // Language Second Edition by Brian W.Kernighan & Dennis M.Ritchie, Section 2.7,
-// page 43. I I made upper function too for more practice.
+// page 43. I made upper function too for more practice. 
