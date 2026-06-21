@@ -1,3 +1,5 @@
+[![My Skills](https://skillicons.dev/icons?i=c)](https://skillicons.dev) Small Project Collection
+
 # C Small Project Collection
 C small project collection is a repository where i store bunch of my small C projects
 
@@ -12,7 +14,14 @@ Click on the project name below to enter the project folder.
 5. [K&R exc 1-20 | detab](./KR_exc120_detab/)
 6. [K&R exc 1-21 | entab](./KR_exc121_entab/)
 7. [K&R exc 1-22 | fold string](./KR_exc122_fold_string/)
-8. [Name list viewer](./name_list_viewer/)
-9. [Password validation](./pasword_validation/)
-10. [Reverse a string](./reverse_a_string/)
-11. [String comparison](./string_comparison/)
+8. [Locate String](./locate_str/)
+9. [Lower & Upper](./lower_upper/)
+10. [Name List Viewer](./name_list_viewer/)
+11. [Password Validation](./pasword_validation/)
+12. [Remove Character](./remove_char/)
+13. [Reverse a String](./reverse_a_string/)
+14. [Size Of Data Type](./sizeof_data_type/)
+15. [String Conacatenate](./str_concatenate/)
+16. [String to Integer](./str_to_int/)
+17. [String Comparison](./string_comparison/)
+18. [To The Power Of](./to_the_power_of/)
