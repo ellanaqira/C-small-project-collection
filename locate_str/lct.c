@@ -49,4 +49,4 @@ void move_arrow(int num) {
 // you can run it by execute this command: ./lct.exe
 // This verry simple project is based from Excercise 2-5 from C Programming
 // Language Second Edition by Brian W.Kernighan & Dennis M.Ritchie. I add
-// little decorations like arrow that poit to the string location and.
+// little decorations like arrow that poit to the string location.
