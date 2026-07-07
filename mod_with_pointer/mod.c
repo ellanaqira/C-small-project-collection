@@ -21,7 +21,6 @@ void input_mod(void) {
     
     int result = mod(&num1, &num2);
     printf("%d mod %d = %d\n", num1, num2, result);
-
 }
 
 int mod(int *num1, int *num2) {
@@ -45,3 +44,15 @@ int mod(int *num1, int *num2) {
     }
     return (*num1-res);
 }
+
+
+/*
+I just learn C pointer and for exercise i make this simple
+project called mod.c, this program allow you to input two
+number to get the modulo (mod) value.
+
+from wikipedia:
+Modulo operation returns the remainder or signed remainder
+of a division, after one number is divided by another, the
+latter being called the modulus of the operation.
+*/
