@@ -20,6 +20,7 @@ int main(void) {
 // Function Definition
 int num_input(void) {
     int num = 0;
+    printf("Enter a number\n");
     printf("> ");
     scanf("%d", &num);
     return num;
@@ -37,4 +38,6 @@ void fill(int *length, int *a) {
         printf("a[%d] = %d\n", i, a[i]);  
     }
     printf("address of number = %p\n", a);
+
+    free(a); // free the space of a so it can used again later 
 }
