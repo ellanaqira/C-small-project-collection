@@ -95,3 +95,11 @@ int str_compare(char str1[], char str2[]) {
     }
     return 0;
 }
+
+
+/*
+You can run this code by type "./main.exe write" to
+write the data into binary file, to see the stored
+data you can type "./main.exe show" to print out the
+data that stored inside of the binari file.
+*/
