@@ -1,27 +1,28 @@
 #include <stdio.h>
 
+
 // Function Declaration
-int writebinf(char *filename, int *data);
+int writebinf(char *filename, int (*data)[10]);
 int showbinf(char *filename);
 int str_compare(char str1[], char str2[]);
 
 
 // MAIN
 int main(int argc, char *argv[]) {
-	int num[10] = {
-		1000000000,
-		1000000001,
-		1000000002,
-		1000000003,
-		1000000004,
-		1000000005,
-		1000000006,
-		1000000007,
-		1000000008,
-		1000000009};
+    int num[] = {
+    1000000000,
+    1000000001,
+    1000000002,
+    1000000003,
+    1000000004,
+    1000000005,
+    1000000006,
+    1000000007,
+    1000000008,
+    1000000009};
 
 	if (str_compare(argv[1], "write") == 1) {
-		writebinf("file.bin", snum);
+		writebinf("file.bin", &num);
 	}
 
 	else if (str_compare(argv[1], "show") == 1) {
@@ -33,7 +34,9 @@ int main(int argc, char *argv[]) {
 
 
 // Function Definition
-int writebinf(char *filename, int *data) {
+int writebinf(char *filename, int (*data)[10]) {
+    int size = sizeof(*data) / sizeof(*data[0]);
+
 	FILE *file;
 	file = fopen(filename, "wb");
 
@@ -42,7 +45,7 @@ int writebinf(char *filename, int *data) {
 		return 1;
 	}
 	// write data to binary file
-	fwrite(data, sizeof(data), 1, file);
+	fwrite(data, sizeof(int), size, file);
 	fclose(file);
 	printf("Write data success\n");
 	return 0;
