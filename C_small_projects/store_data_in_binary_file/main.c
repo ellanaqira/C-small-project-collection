@@ -35,6 +35,9 @@ int main(int argc, char *argv[]) {
 
 // Function Definition
 int writebinf(char *filename, int (*data)[10]) {
+	/*
+	Write data to a binary file
+	*/
     int size = sizeof(*data) / sizeof(*data[0]);
 
 	FILE *file;
@@ -53,6 +56,9 @@ int writebinf(char *filename, int (*data)[10]) {
 
 
 int showbinf(char *filename) {
+	/*
+	Read and print out data that stored in a binary file
+	*/
 	int data[10];
 
 	FILE *file;
@@ -74,6 +80,11 @@ int showbinf(char *filename) {
 
 
 int str_compare(char str1[], char str2[]) {
+	/*
+	Compare two string to see if they are the same
+	if two string are the same return 1,
+	and if not  return 0
+	*/
     int i = 0;
 
     while (str1[i] == str2[i]) {
