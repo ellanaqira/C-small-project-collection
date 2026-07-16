@@ -50,6 +50,11 @@ int main(int argc, char *argv[]) {
             return 1;
         }
     }
+
+    else {
+        printf("'%s' is not a valid command\n", argv[1]);
+    }
+
     free(school);
     
     return 0;
