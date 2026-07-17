@@ -19,7 +19,7 @@ typedef struct {
 
 // Function Declaration
 bool write_data(char *filename, Student *data, int total);
-Student *read_data(char *filename, int *tostal);
+Student *read_data(char *filename, int *total);
 int str_compare(char str1[], char str2[]);
 
 
@@ -53,6 +53,7 @@ int main(int argc, char *argv[]) {
 
     else {
         printf("'%s' is not a valid command\n", argv[1]);
+        return 1;
     }
 
     free(school);
@@ -74,7 +75,7 @@ bool write_data(char *filename, Student *data, int total) {
         return false;
     }
 
-    if (fwrite(data, sizeof(Student), total, file) != 1) {
+    if (fwrite(data, sizeof(Student), total, file) != total) {
         return false;
     }
 
