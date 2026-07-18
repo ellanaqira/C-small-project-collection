@@ -4,8 +4,8 @@
 // Struct
 typedef struct {
     char name[50];
-    int age;
-    float height;
+    char age[10];
+    char height[10];
 } People;
 
 
@@ -19,11 +19,13 @@ int str_compare(char str1[], char str2[]);
 int main(int argc, char *argv[]) {
     
     // Data
-    People person = { "John", 35, 6.0 };
+    People person = {*argv[2], *argv[3], *argv[4]};
 
     if (str_compare(argv[1], "write") == 1) {
         write_data(person);
+        printf("argc = %d\n", argc);
     }
+
 
     else {
         printf("'%s' is not a valid command\n", argv[1]);
