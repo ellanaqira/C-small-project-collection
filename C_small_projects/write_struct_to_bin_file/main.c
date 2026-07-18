@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 
 // Struct
@@ -19,7 +21,12 @@ int str_compare(char str1[], char str2[]);
 int main(int argc, char *argv[]) {
     
     // Data
-    People person = {*argv[2], *argv[3], *argv[4]};
+    People person;
+
+    strcpy(person.name, argv[2]);
+    strcpy(person.age, argv[3]);
+    strcpy(person.height, argv[4]);
+
 
     if (str_compare(argv[1], "write") == 1) {
         write_data(person);
