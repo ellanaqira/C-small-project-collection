@@ -13,7 +13,7 @@ typedef struct {
 
 
 // Function Declaration
-int write_data(People data);
+int write_data(People data, char file_name[]);
 int str_compare(char str1[], char str2[]);
 
 
@@ -29,10 +29,9 @@ int main(int argc, char *argv[]) {
 
 
     if (str_compare(argv[1], "write") == 1) {
-        write_data(person);
+        write_data(person, "test.bin");
         printf("argc = %d\n", argc);
     }
-
 
     else {
         printf("'%s' is not a valid command\n", argv[1]);
@@ -43,8 +42,8 @@ int main(int argc, char *argv[]) {
 
 
 // Function Definition
-int write_data(People data) {
-    FILE *file = fopen("test.bin", "wb");
+int write_data(People data, char file_name[]) {
+    FILE *file = fopen(file_name, "ab");
     if (file == NULL) {
         printf("Failed to open file\n");
         return 1;
