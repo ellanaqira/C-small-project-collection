@@ -19,18 +19,23 @@ int str_compare(char str1[], char str2[]);
 
 // MAIN
 int main(int argc, char *argv[]) {
-    
-    // Data
-    People person;
 
-    strcpy(person.name, argv[2]);
-    strcpy(person.age, argv[3]);
-    strcpy(person.height, argv[4]);
+    if (str_compare(argv[1], "add") == 1) {
+        if (argc == 5) {
+            // Data
+            People person;
+            // Copy string
+            strcpy(person.name, argv[2]);
+            strcpy(person.age, argv[3]);
+            strcpy(person.height, argv[4]);
 
+            write_data(person, "test.bin");
+            printf("argc = %d\n", argc);
+        }
 
-    if (str_compare(argv[1], "write") == 1) {
-        write_data(person, "test.bin");
-        printf("argc = %d\n", argc);
+        else {
+            printf("command must be 'add <name> <age> <height>'\n");
+        }
     }
 
     else {
@@ -54,13 +59,13 @@ int write_data(People data, char file_name[]) {
     num_written = fwrite(&data, sizeof(People), 1, file);
 
     if (num_written != 1) {
-        printf("Failed writing data to file\n");
+        printf("Failed adding data to file\n");
         return 1;
     }
 
     fclose(file);
 
-    printf("Successfully write data to file\n");
+    printf("Successfully add data to file\n");
 
     return 0;
 }
