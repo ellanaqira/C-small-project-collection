@@ -2,40 +2,47 @@
 #include <string.h>
 #include <stdlib.h>
 
+// Constant
+#define MAXCHAR 50
+
 
 // Struct
 typedef struct {
-    char name[50];
-    char age[10];
-    char height[10];
+    char name[MAXCHAR];
+    char age[MAXCHAR];
+    char height[MAXCHAR];
 } People;
-
 
 
 // Function Declaration
 int write_data(People data, char file_name[]);
+int read_data(People data, char file_name[]);
 int str_compare(char str1[], char str2[]);
 
 
 // MAIN
 int main(int argc, char *argv[]) {
+    // Data
+    People person;
 
     if (str_compare(argv[1], "add") == 1) {
         if (argc == 5) {
-            // Data
-            People person;
             // Copy string
             strcpy(person.name, argv[2]);
             strcpy(person.age, argv[3]);
             strcpy(person.height, argv[4]);
 
             write_data(person, "test.bin");
-            printf("argc = %d\n", argc);
         }
 
         else {
             printf("command must be 'add <name> <age> <height>'\n");
+            return 1;
         }
+    }
+
+    else if (str_compare(argv[1], "show") == 1) {
+        read_data(person, "test.bin");
     }
 
     else {
@@ -62,11 +69,26 @@ int write_data(People data, char file_name[]) {
         printf("Failed adding data to file\n");
         return 1;
     }
-
     fclose(file);
 
     printf("Successfully add data to file\n");
+    return 0;
+}
 
+
+int read_data(People data, char file_name[]) {
+    FILE *file = fopen(file_name, "rb");
+    if (file == NULL) {
+        printf("Failed to open file\n");
+        return 1;
+    }
+    
+    while(fread(&data, sizeof(People), 1, file) == 1) {
+        printf("Name : %s, Age : %s, Height : %s\n",
+        data.name, data.age, data.height);
+    }
+
+    fclose(file);
     return 0;
 }
 
