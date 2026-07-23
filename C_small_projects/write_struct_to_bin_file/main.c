@@ -34,7 +34,6 @@ int main(int argc, char *argv[]) {
 
             write_data(person, "test.bin");
         }
-
         else {
             printf("command must be 'add <name> <age> <height>'\n");
             return 1;
@@ -42,7 +41,13 @@ int main(int argc, char *argv[]) {
     }
 
     else if (str_compare(argv[1], "show") == 1) {
-        read_data(person, "test.bin");
+        if (argc == 2) {
+            read_data(person, "test.bin");
+        }
+        else {
+            printf("command must be 'show'\n");
+            return 1;
+        }
     }
 
     else {
@@ -63,7 +68,7 @@ int write_data(People data, char file_name[]) {
 
     // Write data to binary file
     size_t num_written;
-    num_written = fwrite(&data, sizeof(People), 1, file);
+    num_written = fwrite(&data, sizeof(data), 1, file);
 
     if (num_written != 1) {
         printf("Failed adding data to file\n");
@@ -83,7 +88,7 @@ int read_data(People data, char file_name[]) {
         return 1;
     }
     
-    while(fread(&data, sizeof(People), 1, file) == 1) {
+    while(fread(&data, sizeof(data), 1, file) == 1) {
         printf("Name : %s, Age : %s, Height : %s\n",
         data.name, data.age, data.height);
     }
