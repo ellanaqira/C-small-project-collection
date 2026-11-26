@@ -1,48 +1,23 @@
 #include <stdio.h>
 
-// Constant
-#define LENGTH 9
-// External Variable
-int number[LENGTH] = {2, 6, 10, 3, 7, 9, 5, 13, 3};
-
-
-// Function declaration
-void make_histogram();
+void horhstgrm(int *data, int datalen, int y_jump, char *bar);
 
 int main() {
-    extern int number[LENGTH];
-    printf(" ______________________\n");
-    printf("|_Sales_Histogram_Data_|\n");
-    printf(" \\____From_1-9_May____/\n\n");
-
-    make_histogram();
-    return 0;
+	int data[] = {2, 6, 20, 10, 3, 7, 12, 5, 13, 3, 10, 9};
+	int datalen = (int)(sizeof(data) / sizeof(int));
+	horhstgrm(data, datalen, 3, "🮅");
 }
 
-void make_histogram(void) {
-    int i = 0;
-    int n = 0;
-    
-    extern int number[LENGTH];
+void horhstgrm(int *data, int datalen, int y_jump, char *bar) {
+    int i, j;
 
-    while(i<=(LENGTH-1) && n <= number[i]) {
-        if(n == number[i]) {
-            printf("\n");
-            ++i;
-            n=0;
+    for (i=datalen; 0 < i; i--) {
+    	if (i%y_jump == 0) printf(" %d┤%3d|", y_jump, data[datalen-i]);
+    	else printf("  |%3d|", data[datalen-i]);
+        for (j=0; j<data[datalen-i]; j++) {
+        	printf("%s", bar);
         }
-        if(n == 0) {
-            printf("%d-|", i+1);
-        }
-        if(i == (LENGTH-1)) {
-            int x;
-            for(x=0; x <= number[i]; ++x) {
-                printf("=");
-            }
-            printf("\n");
-            break;
-        }
-        ++n;
-        printf("=");
+        printf("\n");
     }
+    printf("\n total: %d\n", datalen);
 }
